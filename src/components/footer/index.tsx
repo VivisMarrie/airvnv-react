@@ -12,9 +12,9 @@ function Footer() {
         <Row className='align-items-center justify-content-center'>
             <Col sm={4} className='d-flex justify-content-end pr-3'>
                 <ul className="list-unstyled">
-                    <li><Link to={{pathname: 'https://www.linkedin.com/in/vivribeiro/'}} target="_blank" ><FaLinkedinIn color='#5c32a8' size={30}/>@vivribeiro</Link></li> 
-                    <li><Link to={{pathname: 'https://github.com/VivisMarrie/'}} target="_blank"><FaGithub color='#5c32a8' size={30} />@VivisMarrie</Link></li> 
-                    <li><Link to={{pathname: 'https://www.instagram.com/vivismarrie/'}} target="_blank"><FaInstagram color='#5c32a8' size={30}/>@vivismarrie</Link></li> 
+                    <li><Link to={{pathname: 'https://www.linkedin.com/in/vivribeiro/'}} target="_blank" style={{ color: '#000000' }}><FaLinkedinIn color='#5c32a8' size={30}/>@vivribeiro</Link></li> 
+                    <li><Link to={{pathname: 'https://github.com/VivisMarrie/'}} target="_blank" style={{ color: '#000000' }}><FaGithub color='#5c32a8' size={30} />@VivisMarrie</Link></li> 
+                    <li><Link to={{pathname: 'https://www.instagram.com/vivismarrie/'}} target="_blank" style={{ color: '#000000' }}><FaInstagram color='#5c32a8' size={30}/>@vivismarrie</Link></li> 
                 </ul> 
             </Col>
             <Col sm={4} className='d-flex text-center pt-3'>
@@ -29,7 +29,7 @@ function Footer() {
                         <FaReact/> <FaBootstrap/>
                     </li>             
                     <li>
-                        <Link to={{pathname: 'https://www.linkedin.com/in/vivribeiro/'}} target="_blank" ><FaCode color='#5c32a8' size={35}/></Link>
+                        <Link to={{pathname: 'https://github.com/VivisMarrie/airvnv-react/'}} target="_blank" ><FaCode color='#5c32a8' size={35}/></Link>
                     </li> 
             </ul>
             </Col>

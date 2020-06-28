@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Badge from 'react-bootstrap/Badge';
+import { FaStar } from 'react-icons/fa';
+import Pagination from "react-js-pagination";
+import Place from '../../models';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 

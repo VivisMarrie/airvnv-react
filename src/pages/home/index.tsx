@@ -11,23 +11,10 @@ import logo from '../../images/favicon.png';
 
 import Footer from '../../components/footer';
 import Page from '../../components/page';
-
+import Place from '../../models';
 
 interface JsonReq {
     airvnv : Place[]
-}
-
-interface Place {
-    id: number,
-    photo: string,
-    propertyType: string,
-    name: string,
-    price: number,
-    priceCurrency: string,
-    lat: number,
-    lng: number,
-    score: number,
-    tag: string
 }
 
 const Home = () => {
@@ -72,13 +59,12 @@ const Home = () => {
 
             
             <Container className='mt-2'>
-                {/* <SimpleMap/>  */}
+                <SimpleMap />
 
-                <Page {...jsnResponse} />
+                <Page data={jsnResponse} />
+                     
             
-
             </Container>
-
             <Footer/>
         </>
     )

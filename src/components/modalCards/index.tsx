@@ -10,18 +10,25 @@ import Place from '../../models';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
+interface Props {
+  place: Place | undefined,
+  show: boolean
+}
 
-const ModalCards = () => {
-    const [show, setShow] = useState(false);
+const ModalCards: React.FC<Props> = (props) => {
+    const [show, setShow] = useState(props.show);
+
+    const place = props.place;
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
     return (
       <>  
-        <Modal show={show} onHide={handleClose} centered size="lg">
+        {place?
+          <Modal show={show} onHide={handleClose} centered size="lg">
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{place.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
           <Modal.Footer>
@@ -33,6 +40,8 @@ const ModalCards = () => {
             </Button>
           </Modal.Footer>
         </Modal>
+        : <></>
+        }
       </>
     );
   }

@@ -54,7 +54,7 @@ const Home = () => {
             <Container className='mt-2'>
                 <Map data={jsnResponse} />
 
-                <Page data={jsnResponse} />
+                <Page data={jsnResponse} qtdHospedes={qtdHospedes} qtdDiarias={qtdDiarias} />
                                  
             </Container>
             <Footer/>

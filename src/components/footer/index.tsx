@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import { GiWhiteCat } from 'react-icons/gi';
 
-function Footer() {
+const Footer = () => {
   return (
     <Container fluid className='footer border-top shadow-md'>
         <Row className='align-items-center justify-content-center'>

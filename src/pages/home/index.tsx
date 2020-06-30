@@ -1,17 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import SimpleMap from './../../components/map';
+import Map from './../../components/map';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Image from 'react-bootstrap/Image';
-
-import logo from '../../images/favicon.png';
-
 import Footer from '../../components/footer';
 import Page from '../../components/page';
 import Place from '../../models';
+import Header from '../../components/header';
+import { FaPlaceOfWorship } from 'react-icons/fa';
 
 interface JsonReq {
     airvnv : Place[]
@@ -20,6 +16,8 @@ interface JsonReq {
 const Home = () => {
 
     const [jsnResponse, setjsnResponse] = useState<Place[]>([]);
+    const [qtdHospedes, setQtdHospedes] = useState<number>();
+    const [qtdDiarias, setQtdDiarias] = useState<number>();
 
     useEffect(() => {
         axios
@@ -40,30 +38,29 @@ const Home = () => {
           });      
       },[]);
 
+    useEffect(() => {
+        console.log("changedddd", "qtdDiarias", qtdDiarias ? true : false, "qtdHospedes", qtdHospedes ? true : false);
+        jsnResponse.map(place => {
+            if(qtdHospedes && qtdDiarias) {
+                place.total = qtdHospedes * qtdDiarias * place.price;
+            } else {
+                place.total = null;
+            }
+            console.log("place.total", place.total);
+            
+        });
+        setjsnResponse(jsnResponse);
+    },[qtdHospedes, qtdDiarias, jsnResponse]);
 
     return(
         <>      
-            <Navbar bg="white" expand="lg" className="sticky-top border-bottom shadow-sm justify-content-between">
-                <Navbar.Brand href="#home" color='#ff0088'>          
-                <p style={{color:   '#ff0088'}} className='h2' ><Image src={logo} width="35" height="35" rounded />
-                         airvnv</p>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Sobre</Nav.Link>                
-                    </Nav>               
-                </Navbar.Collapse>
-            </Navbar>
+            <Header currentPage='home' setQtdHospedes={setQtdHospedes} setQtdDiarias={setQtdDiarias}  />
 
-            
             <Container className='mt-2'>
-                <SimpleMap />
+                <Map data={jsnResponse} />
 
                 <Page data={jsnResponse} />
-                     
-            
+                                 
             </Container>
             <Footer/>
         </>

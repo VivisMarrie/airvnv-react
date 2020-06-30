@@ -1,0 +1,15 @@
+.modalMap::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: -0.6em;
+    bottom: -1.1em;
+    left: 50%;
+    box-sizing: border-box;
+    border: 0.6em solid white;
+    border-color: transparent transparent white white;
+    transform-origin: 0 0;
+    transform: rotate(-45deg);
+    box-shadow: -3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+}

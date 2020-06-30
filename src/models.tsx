@@ -8,7 +8,9 @@ interface Place {
     lat: number,
     lng: number,
     score: number,
-    tag: string
+    tag: string,
+    show: boolean,
+    total: number | null
 }
 
 export default Place;

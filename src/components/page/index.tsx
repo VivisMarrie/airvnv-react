@@ -26,6 +26,8 @@ const Page: React.FC<Props> = ({data}) => {
     const [resultToRender, setResultToRender] = useState<Place[]>([]);
     
     useEffect(() => {
+        console.log("rerender page");
+        
         setTotalItens(data.length);
         const indexOfLast = activePage * 9;
         const indexOfFirst = indexOfLast - 9;
@@ -51,13 +53,17 @@ const Page: React.FC<Props> = ({data}) => {
                                 <Card.Text>
                                     <Badge className={`badge-${ColorsBadges[place.tag as keyof typeof ColorsBadges]}`} >{place.tag}</Badge>
                                     <small className="text-muted"> {place.propertyType}</small>
-                                    <small><span className="float-right"><FaStar color='#f542d4' />{place.score}</span></small>
+                                    <small><span className="float-right"><FaStar color='#FF5A5F' />{place.score}</span></small>
                                 </Card.Text >
                                 <h6>{place.name}</h6>
                                 <Card.Text>
                                     <small><b>{place.priceCurrency} {place.price}</b>/Noite</small>
+                                    { place.total ? 
+                                        <span className="float-right">
+                                        <small className="text-muted">Total: <b>{place.priceCurrency}  {place.total}</b></small>
+                                    </span> : <></> }
                                 </Card.Text>
-                                <a id="cardlink-" data-toggle="modal" data-target="#modalCard" href="/" className="stretched-link"></a>
+                                <a id="cardlink-" data-toggle="modal" data-target="#modalCard" href="/" className="stretched-link">{null}</a>
                             </Card.Body>
                             </Card>
                         </span>

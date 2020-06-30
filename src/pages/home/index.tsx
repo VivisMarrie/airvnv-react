@@ -7,7 +7,6 @@ import Footer from '../../components/footer';
 import Page from '../../components/page';
 import Place from '../../models';
 import Header from '../../components/header';
-import { FaPlaceOfWorship } from 'react-icons/fa';
 
 interface JsonReq {
     airvnv : Place[]
@@ -30,27 +29,23 @@ const Home = () => {
             // }           
             //const result = [...data];
             setjsnResponse(data.airvnv);
-            console.log("effect executa", data.airvnv);
-            
-
           }).catch((Error) => {
             console.error(Error);
           });      
       },[]);
 
     useEffect(() => {
-        console.log("changedddd", "qtdDiarias", qtdDiarias ? true : false, "qtdHospedes", qtdHospedes ? true : false);
         jsnResponse.map(place => {
-            if(qtdHospedes && qtdDiarias) {
-                place.total = qtdHospedes * qtdDiarias * place.price;
-            } else {
-                place.total = null;
-            }
-            console.log("place.total", place.total);
-            
-        });
-        setjsnResponse(jsnResponse);
-    },[qtdHospedes, qtdDiarias, jsnResponse]);
+        if(qtdHospedes && qtdDiarias){
+            place.total = qtdHospedes * qtdDiarias * place.price;
+        } else {
+            place.total =  null;
+        }
+        return place;
+    });
+        setjsnResponse(jsnResponse => [...jsnResponse]);
+        // eslint-disable-next-line
+    },[qtdHospedes, qtdDiarias]);
 
     return(
         <>      

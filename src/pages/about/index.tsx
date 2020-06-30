@@ -11,7 +11,7 @@ import Image from 'react-bootstrap/Image';
 const About = () => {
     return(
         <>      
-            {/* <Header currentPage="about" qtdDiarias={undefined} qtdHospedes={undefined} /> */}
+             <Header currentPage="about" setQtdDiarias={null} setQtdHospedes={null} />
             
             <Container className='mt-2'>
                 <br />

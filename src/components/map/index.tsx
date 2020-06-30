@@ -16,15 +16,6 @@ interface MarkerProps {
       callback : any
   };
 
-const Marker = (props:MarkerProps) => {
-    return ( 
-         <div className="container">
-          <FaMapMarkerAlt size={35} color="#FF5A5F" strokeWidth={5} stroke="black" />
-          {props.place.show && <InfoWindow {...props} />}          
-         </div>        
-    )
-}
-
 const Map:React.FC<Props> = ({data}) => {
     const [placeMarkers, setPlaceMarkers] = useState<Place[]>();
 
@@ -47,20 +38,20 @@ const Map:React.FC<Props> = ({data}) => {
       }
     },[data]);
 
-    const onChildClickCallback = (key:number) => {      
-      if(placeMarkers){        
-        const place = placeMarkers.find(e => e.id == key);
+    const onChildClickCallback = (key:string) => {      
+      if(placeMarkers){   
+        const place = placeMarkers.find(e => e.id === parseInt(key));
         if(place)
           place.show = true;
       }      
     };
 
-    const closeInfoWindow = (id:number) => {
-      if(placeMarkers){        
-        const place = placeMarkers.find(e => e.id == id);
+    const closeInfoWindow = (id:string) => {
+      if(placeMarkers){               
+        const place = placeMarkers.find(e => e.id === parseInt(id));
         if(place)
           place.show = false;
-        setPlaceMarkers(placeMarkers);
+        setPlaceMarkers([...placeMarkers]);
       }      
     }
 
@@ -92,7 +83,14 @@ const Map:React.FC<Props> = ({data}) => {
 
 export default Map;
 
-
+const Marker = (props:MarkerProps) => {
+  return ( 
+      <div className="container">
+        <FaMapMarkerAlt size={35} color="#FF5A5F" strokeWidth={5} stroke="black" />
+        {props.place.show && <InfoWindow {...props} />}          
+      </div>        
+  )
+}
 
 const InfoWindow:React.FC<MarkerProps> = (props) => {
   const place = props.place;

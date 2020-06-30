@@ -25,9 +25,7 @@ const Page: React.FC<Props> = ({data}) => {
     const [totalItens, setTotalItens] = useState<number>(0);
     const [resultToRender, setResultToRender] = useState<Place[]>([]);
     
-    useEffect(() => {
-        console.log("rerender page");
-        
+    useEffect(() => {       
         setTotalItens(data.length);
         const indexOfLast = activePage * 9;
         const indexOfFirst = indexOfLast - 9;
